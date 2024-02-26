@@ -10,8 +10,8 @@ const app = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   if (parsedUrl.pathname === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello Holberton School!');
+    res.write('Hello Holberton School!');
+    res.end();
   }
 
   if (parsedUrl.pathname === '/students') {
@@ -31,6 +31,8 @@ const app = http.createServer(async (req, res) => {
       res.end(error.message);
     });
   }
+  res.statusCode = 404;
+  res.end();
 });
 
 app.listen(port);
