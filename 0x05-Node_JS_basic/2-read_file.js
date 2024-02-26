@@ -7,12 +7,14 @@ function countStudents(path) {
     const fileContent = fs.readFileSync(path, 'utf8');
     const listLines = fileContent.toString().trim().split('\n');
     console.log(`Number of students: ${listLines.length - 1}`);
-    listLines.shift();
-    listLines.forEach((str) => {
+
+    listLines.slice(1).forEach((str) => {
       const newList = str.split(',');
       const field = newList.pop();
-      fields.hasOwnProperty(field) ? fields[field] += 1 : fields[field] = 1;
-      names.hasOwnProperty(field) ? names[field].push(newList[0]) : names[field] = [newList[0]];
+      fields[field] = Object.prototype.hasOwnProperty.call(fields, field) ? fields[field] + 1 : 1;
+      names[field] = Object.prototype.hasOwnProperty.call(names, field)
+        ? [...names[field], newList[0]]
+        : [newList[0]];
     });
     for (const [key, val] of Object.entries(fields)) {
       const nameString = names[key].join(', ');
