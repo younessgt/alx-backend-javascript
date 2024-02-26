@@ -18,15 +18,18 @@ const app = http.createServer(async (req, res) => {
     try {
       const data = await countStudents(path);
       const { fields, names, length: len } = data;
-      let msg2 = '';
-      const msg1 = `Number of students: ${len}\n`;
+      let msg3 = '';
+      const msg1 = 'This is the list of our students';
+      const msg2 = `Number of students: ${len}`;
+      const storeMsg = [];
+      storeMsg.push(msg1, msg2);
       for (const [key, val] of Object.entries(fields)) {
         const nameString = names[key].join(', ');
-        msg2 += `Number of students in ${key}: ${val}. List: ${nameString}\n`;
+        msg3 = `Number of students in ${key}: ${val}. List: ${nameString}`;
+        storeMsg.push(msg3);
       }
-      const message = `This is the list of our students\n${msg1}${msg2}`;
       res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end(message.trim());
+      res.end(storeMsg.join('\n'));
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end(error.message);
