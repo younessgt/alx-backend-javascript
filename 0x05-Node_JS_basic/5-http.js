@@ -26,6 +26,8 @@ const app = http.createServer(async (req, res) => {
       const message = msg1 + msg2;
       res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.end(message.trim());
+    }).catch((error) => {
+      res.end(error.message);
     });
   }
 });
