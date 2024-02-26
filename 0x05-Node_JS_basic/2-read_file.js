@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function countStudent(path) {
+function countStudents(path) {
   if (fs.existsSync(path)) {
     const names = {};
     const fields = {};
@@ -23,4 +23,4 @@ function countStudent(path) {
   }
 }
 
-module.exports = countStudent;
+module.exports = countStudents;
