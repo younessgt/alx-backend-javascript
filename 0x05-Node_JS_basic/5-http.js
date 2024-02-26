@@ -9,6 +9,7 @@ const path = process.argv[2];
 const app = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
   if (parsedUrl.pathname === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
     return;
   }
