@@ -28,6 +28,7 @@ const app = http.createServer(async (req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.end(message.trim());
     } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end(error.message);
     }
     return;
