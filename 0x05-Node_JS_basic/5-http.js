@@ -6,7 +6,7 @@ const port = 1245;
 
 const path = process.argv[2];
 
-const app = http.createServer((req, res) => {
+const app = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   if (parsedUrl.pathname === '/') {
@@ -15,9 +15,8 @@ const app = http.createServer((req, res) => {
   }
 
   if (parsedUrl.pathname === '/students') {
-    countStudents(path).then((data) => {
+    await countStudents(path).then((data) => {
       const { fields, names, length: len } = { ...data };
-      console.log(len);
       let msg2 = '';
       const msg1 = `Number of students: ${len}\n`;
       for (const [key, val] of Object.entries(fields)) {
