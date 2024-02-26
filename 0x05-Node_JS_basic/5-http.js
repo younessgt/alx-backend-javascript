@@ -11,7 +11,7 @@ const app = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   if (parsedUrl.pathname === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello Holberton School2222!');
+    res.end('Hello Holberton School!');
   }
 
   if (parsedUrl.pathname === '/students') {
