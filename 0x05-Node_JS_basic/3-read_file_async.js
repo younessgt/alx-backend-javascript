@@ -35,6 +35,7 @@ function countStudents(path) {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
         reject(Error('Cannot load the database'));
+        return;
       }
       const names = {};
       const fields = {};
