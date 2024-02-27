@@ -15,21 +15,11 @@ const app = http.createServer(async (req, res) => {
   }
 
   if (parsedUrl.pathname === '/students') {
+    res.write('This is the list of our students\n');
     try {
       const data = await countStudents(path);
-      const { fields, names, length: len } = data;
-      let msg3 = '';
-      const msg1 = 'This is the list of our students';
-      const msg2 = `Number of students: ${len}`;
-      const storeMsg = [];
-      storeMsg.push(msg1, msg2);
-      for (const [key, val] of Object.entries(fields)) {
-        const nameString = names[key].join(', ');
-        msg3 = `Number of students in ${key}: ${val}. List: ${nameString}`;
-        storeMsg.push(msg3);
-      }
       res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end(storeMsg.join('\n'));
+      res.end(data.join('\n'));
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end(error.message);

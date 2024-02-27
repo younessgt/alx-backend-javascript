@@ -39,9 +39,12 @@ function countStudents(path) {
       }
       const names = {};
       const fields = {};
+      const dataList = [];
       const listLines = data.toString().trim().split('\n');
       const numberOfStudents = listLines.length ? listLines.length - 1 : 0;
-      console.log(`Number of students: ${numberOfStudents}`);
+      const msg = `Number of students: ${numberOfStudents}`;
+      console.log(msg);
+      dataList.push(msg);
 
       listLines.slice(1).forEach((str) => {
         const newList = str.split(',');
@@ -53,14 +56,11 @@ function countStudents(path) {
       });
       for (const [key, val] of Object.entries(fields)) {
         const nameString = names[key].join(', ');
-        console.log(`Number of students in ${key}: ${val}. List: ${nameString}`);
+        const msg2 = `Number of students in ${key}: ${val}. List: ${nameString}`;
+        console.log(msg2);
+        dataList.push(msg2);
       }
-      const resolutionData = {
-        fields,
-        names,
-        length: listLines.length - 1,
-      };
-      resolve(resolutionData);
+      resolve(dataList);
     });
   });
 }
