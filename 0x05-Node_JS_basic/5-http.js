@@ -8,8 +8,9 @@ const path = process.argv[2];
 
 const app = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+
   if (parsedUrl.pathname === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
     return;
   }
@@ -18,10 +19,8 @@ const app = http.createServer(async (req, res) => {
     res.write('This is the list of our students\n');
     try {
       const data = await countStudents(path);
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.end(data.join('\n'));
     } catch (error) {
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end(error.message);
     }
     return;
