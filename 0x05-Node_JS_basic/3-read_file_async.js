@@ -40,7 +40,8 @@ function countStudents(path) {
       const names = {};
       const fields = {};
       const listLines = data.toString().trim().split('\n');
-      console.log(`Number of students: ${listLines.length - 1}`);
+      const numberOfStudents = listLines.length ? listLines.length - 1 : 0;
+      console.log(`Number of students: ${numberOfStudents}`);
 
       listLines.slice(1).forEach((str) => {
         const newList = str.split(',');
