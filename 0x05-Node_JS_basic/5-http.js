@@ -29,8 +29,6 @@ const app = http.createServer(async (req, res) => {
         storeMsg.push(msg3);
       }
       res.writeHead(200, { 'Content-Type': 'text/plain' });
-      const x = storeMsg.join('\n');
-      console.log(x.length);
       res.end(storeMsg.join('\n'));
     } catch (error) {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
