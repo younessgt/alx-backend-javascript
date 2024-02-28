@@ -6,6 +6,7 @@ describe('calculateNumber', () => {
     assert.strictEqual(calculateNumber(1, 3), 4);
     assert.strictEqual(calculateNumber(10, 3), 13);
     assert.strictEqual(calculateNumber(0, 5), 5);
+    assert.strictEqual(calculateNumber(1, -3), -2);
   });
 
   it('test float', () => {
