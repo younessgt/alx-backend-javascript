@@ -11,7 +11,8 @@ describe('calculateNumber', () => {
   it('test float', () => {
     assert.strictEqual(calculateNumber(1, 3.7), 5);
     assert.strictEqual(calculateNumber(1.2, 3.7), 5);
-    assert.strictEqual(calculateNumber(1.5, 3.7), 5);
+    assert.strictEqual(calculateNumber(1.5, 3.2), 5);
+    assert.strictEqual(calculateNumber(1.2, 3), 4);
   });
 
   it('test not a number', () => {
